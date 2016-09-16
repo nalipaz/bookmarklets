@@ -7,8 +7,7 @@ before_install:
     fi
 
 script:
-  -
-    if [ "$ONLY_COMPILE" == "true" ]; then
+  - if [ "$ONLY_COMPILE" == "true" ]; then
       echo "Skipping deploy; just doing a build."
       exit 0;
     fi
@@ -23,12 +22,12 @@ script:
     git config user.name "Travis CI"
     git config user.email "$COMMIT_AUTHOR_EMAIL"
     if [ -z `git diff --exit-code` ]; then
-        echo "No changes to the output on this push; exiting."
-        exit 0
+      echo "No changes to the output on this push; exiting."
+      exit 0
     fi
     git add .
     git commit -m "Deploy to GitHub Pages:: ${TRAVIS_COMMIT}"
-    git push -f -q https://${GH_USER}:$GITHUB_API_KEY@github.com/${TRAVIS_REPO_SLUG}
+    git push -f -q https://${GH_USER}:${GH_API_KEY}@github.com/${TRAVIS_REPO_SLUG}
 
 after_success:
   - cd "$TRAVIS_BUILD_DIR"/docs
