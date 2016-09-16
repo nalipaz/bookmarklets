@@ -1,2 +1,2 @@
-[Uppercase]():  
-Changes selected text in input or text area to UPPERCASE.
+# Bookmarklets[Lowercase]():  
+Changes selected text in input or textarea to lowercase.
