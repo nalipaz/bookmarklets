@@ -2,29 +2,29 @@ matrix:
   fast_finish: true
 
 before_install:
-  - if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
+  - if [ "${TRAVIS_PULL_REQUEST}" != "false" -o "${TRAVIS_BRANCH}" != "${SOURCE_BRANCH}" ]; then
       ONLY_COMPILE="true";
     fi
   - REPO=`git config remote.origin.url`;
     SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:};
-    git clone $REPO $TARGET_BRANCH;
-    cd $TARGET_BRANCH;
-    git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH;
+    git clone ${REPO} ${TARGET_BRANCH};
+    cd ${TARGET_BRANCH};
+    git checkout ${TARGET_BRANCH} || git checkout --orphan ${TARGET_BRANCH};
     git config user.name "Travis CI";
     git config user.email "${GH_USER_EMAIL}";
-  - if [ "$job" == "first" ]; then
+  - if [ "${job}" == "first" ]; then
       rm -rf ./**/*;
-      printf "$(cat templates/index.md.tpl)"
+      printf "$(cat ${TRAVIS_BUILD_DIR}/templates/index.md.tpl)"
        > index.md;
     fi
 
 script:
-  - if [ "$ONLY_COMPILE" == "true" ]; then
+  - if [ "${ONLY_COMPILE}" == "true" ]; then
       echo "Skipping deploy; just doing a build.";
       exit 0;
     fi;
-  - link="javascript:"$(echo $(cat $name | sed 's/^\s*\/\/.*?\n|([;\{\}])\s*\/\/.*?\n//'))
-    printf "$(cat templates/bookmarklet.md.tpl)"
+  - link="javascript:"$(echo $(cat ${TRAVIS_BUILD_DIR}/${name} | sed 's/^\s*\/\/.*?\n|([;\{\}])\s*\/\/.*?\n//'))
+    printf "$(cat ${TRAVIS_BUILD_DIR}/templates/bookmarklet.md.tpl)"
      "${title}"
      "${link}"
      "${description}"
