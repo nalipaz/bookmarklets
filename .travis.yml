@@ -14,7 +14,7 @@ before_install:
     git config user.email "${GH_USER_EMAIL}";
   - if [ "${job}" == "first" ]; do
       rm -rf ./**/*;
-      printf "$(cat ${TRAVIS_BUILD_DIR}/${TARGET_BRANCH}/templates/index.md.tpl)"\
+      printf "$(cat ${TRAVIS_BUILD_DIR}/${TARGET_BRANCH}/templates/index.md.tpl)"
        > index.md;
     fi
 
@@ -24,10 +24,10 @@ script:
       exit 0;
     fi;
   - link="javascript:"$(echo $(cat ${TRAVIS_BUILD_DIR}/${TARGET_BRANCH}/$name | sed 's/^\s*\/\/.*?\n|([;\{\}])\s*\/\/.*?\n//'))
-    printf "$(cat ${TRAVIS_BUILD_DIR}/${TARGET_BRANCH}/templates/bookmarklet.md.tpl)"\
-     "${title}"\
-     "${link}"\
-     "${description}"\
+    printf "$(cat ${TRAVIS_BUILD_DIR}/${TARGET_BRANCH}/templates/bookmarklet.md.tpl)"
+     "${title}"
+     "${link}"
+     "${description}"
      >> index.md
   - if [ $(git status --porcelain | wc -l) -lt 1 ]; then
       echo "No changes to the output on this push; exiting.";
