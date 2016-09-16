@@ -16,10 +16,9 @@ script:
     git clone $REPO $TARGET_BRANCH;
     cd $TARGET_BRANCH;
     git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH;
-    rm -rf ./**/* || exit 0;
     touch test.md;
     git config user.name "Travis CI";
-    git config user.email "$COMMIT_AUTHOR_EMAIL";
+    git config user.email "${GH_USER_EMAIL}";
     if [ -z `git diff --exit-code` ]; then
       echo "No changes to the output on this push; exiting.";
       exit 0;
