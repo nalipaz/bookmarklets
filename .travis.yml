@@ -25,7 +25,7 @@ script:
       exit 0;
     fi;
     git add .;
-    git commit -m "Deploy to GitHub Pages:: ${TRAVIS_COMMIT}";
+    git commit -m "Deploy to GitHub Pages:${TRAVIS_COMMIT}";
     git push -f -q https://${GH_USER}:${GH_API_KEY}@github.com/${TRAVIS_REPO_SLUG};
 
 notifications:
@@ -36,4 +36,4 @@ env:
     - SOURCE_BRANCH=master
     - TARGET_BRANCH=gh-pages
     - GH_USER=nalipaz
-    - GH_USER_EMAIL=nicholas@alipaz.net
+    - GH_USER_EMAIL='nicholas@alipaz.net'
