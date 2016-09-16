@@ -23,7 +23,7 @@ script:
       echo "Skipping deploy; just doing a build.";
       exit 0;
     fi;
-  - link="javascript:"$(echo $(cat ${TRAVIS_BUILD_DIR}/${name} | sed 's/^\s*\/\/.*?\n|([;\{\}])\s*\/\/.*?\n//'))
+  - link="javascript:"$(echo $(cat ${TRAVIS_BUILD_DIR}/${name}.js | sed 's/^\s*\/\/.*?\n|([;\{\}])\s*\/\/.*?\n//'));
     printf "$(cat ${TRAVIS_BUILD_DIR}/templates/bookmarklet.md.tpl)"
      "${title}"
      "${link}"
