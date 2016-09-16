@@ -12,8 +12,8 @@ before_install:
     git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH;
     git config user.name "Travis CI";
     git config user.email "${GH_USER_EMAIL}";
-  - if [ "${job}" == "first" ]; do
-      rm index.md;
+  - if [ "$job" == "first" ]; then
+      rm -rf ./**/*;
       printf "$(cat ${TRAVIS_BUILD_DIR}/${TARGET_BRANCH}/templates/index.md.tpl)"
        > index.md;
     fi
