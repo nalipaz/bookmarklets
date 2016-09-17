@@ -19,8 +19,7 @@ script:
       exit 0;
     fi;
   - if [ "${job}" == "first" ]; then
-      printf "$(cat ${TRAVIS_BUILD_DIR}/templates/header.html.tpl)"
-       > index.html;
+      printf "" > index.html;
     fi;
   - link="javascript:"$(echo $(cat ${TRAVIS_BUILD_DIR}/${name}.js | sed 's/^\s*\/\/.*?\n|([;\{\}])\s*\/\/.*?\n//'));
     printf "$(cat ${TRAVIS_BUILD_DIR}/templates/bookmarklet.html.tpl)"
@@ -29,8 +28,9 @@ script:
      "${description}"
      >> index.html;
   - if [ "${job}" == "last" ]; then
-      printf "$(cat ${TRAVIS_BUILD_DIR}/templates/footer.html.tpl)"
-       >> index.html;
+      printf "$(cat ${TRAVIS_BUILD_DIR}/templates/index.html.tpl)"
+       "$(cat ${TRAVIS_BUILD_DIR}/index.html)"
+       > index.html;
     fi;
   - if [ $(git status --porcelain | wc -l) -lt 1 ]; then
       echo "No changes to the output on this push; exiting.";

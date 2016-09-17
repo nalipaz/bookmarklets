@@ -6,3 +6,8 @@
   <body>
     <h1>Bookmarklets</h1>
     <dl>
+%s
+    </dl>
+  </body>
+
+</html>
