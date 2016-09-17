@@ -1,7 +1,7 @@
 (function () {
-  var loaderScript = document.createElement("script");
-  loaderScript.src = "https://cdn.rawgit.com/nalipaz/bookmarklets/df32bba6d34afffdd120ba268637653968fe12b0/lib/Loader.js";
-  loaderScript.addEventListener("load", callback, false);
+  var loaderScript = document.createElement('script');
+  loaderScript.src = 'https://cdn.rawgit.com/nalipaz/bookmarklets/df32bba6d34afffdd120ba268637653968fe12b0/lib/Loader.js';
+  loaderScript.addEventListener('load', callback, false);
   document.body.appendChild(loaderScript);
 
   function callback() {
