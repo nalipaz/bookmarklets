@@ -22,14 +22,14 @@ script:
       rm -rf ./**/*;
       printf "$(cat ${TRAVIS_BUILD_DIR}/templates/header.html.tpl)"
        > index.html;
-    fi
-  - link="javascript:"$(echo $(cat ${TRAVIS_BUILD_DIR}/${name}.js | sed 's/^\s*\/\/.*?\n|([;\{\}])\s*\/\/.*?\n//'));
+    fi;
+    link="javascript:"$(echo $(cat ${TRAVIS_BUILD_DIR}/${name}.js | sed 's/^\s*\/\/.*?\n|([;\{\}])\s*\/\/.*?\n//'));
     printf "$(cat ${TRAVIS_BUILD_DIR}/templates/bookmarklet.html.tpl)"
      "${link}"
      "${title}"
      "${description}"
-     >> index.html
-  - if [ "${job}" == "last" ]; then
+     >> index.html;
+    if [ "${job}" == "last" ]; then
       rm -rf ./**/*;
       printf "$(cat ${TRAVIS_BUILD_DIR}/templates/footer.html.tpl)"
        >> index.html;
