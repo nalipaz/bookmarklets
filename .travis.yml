@@ -30,7 +30,6 @@ script:
      "${description}"
      >> index.html;
     if [ "${job}" == "last" ]; then
-      rm -rf ./**/*;
       printf "$(cat ${TRAVIS_BUILD_DIR}/templates/footer.html.tpl)"
        >> index.html;
     fi
