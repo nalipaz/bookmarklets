@@ -18,8 +18,7 @@ script:
       echo "Skipping deploy; just doing a build.";
       exit 0;
     fi;
-  - if [ "${job}" == "first" ]; then
-      rm -rf ./**/*;
+    if [ "${job}" == "first" ]; then
       printf "$(cat ${TRAVIS_BUILD_DIR}/templates/header.html.tpl)"
        > index.html;
     fi;
@@ -32,8 +31,8 @@ script:
     if [ "${job}" == "last" ]; then
       printf "$(cat ${TRAVIS_BUILD_DIR}/templates/footer.html.tpl)"
        >> index.html;
-    fi
-  - if [ $(git status --porcelain | wc -l) -lt 1 ]; then
+    fi;
+    if [ $(git status --porcelain | wc -l) -lt 1 ]; then
       echo "No changes to the output on this push; exiting.";
       exit 0;
     fi;
