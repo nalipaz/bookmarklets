@@ -22,7 +22,7 @@ script:
       printf "" > index.html;
     fi;
   - link="javascript:"$(echo $(cat ${TRAVIS_BUILD_DIR}/${name}.js | sed 's/^\s*\/\/.*?\n|([;\{\}])\s*\/\/.*?\n//'));
-    printf "$(cat ${TRAVIS_BUILD_DIR}/templates/bookmarklet.html.tpl)"
+    printf "$(cat ${TRAVIS_BUILD_DIR}/templates/bookmarklet.html.tpl)\n"
      "${link}"
      "${title}"
      "${description}"
