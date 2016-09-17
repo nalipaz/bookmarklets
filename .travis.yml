@@ -29,7 +29,7 @@ script:
      >> index.html;
   - if [ "${job}" == "last" ]; then
       printf "$(cat ${TRAVIS_BUILD_DIR}/templates/index.html.tpl)"
-       "$(cat ${TRAVIS_BUILD_DIR}/index.html)"
+       "$(cat ${TRAVIS_BUILD_DIR}/${TARGET_BRANCH}/index.html)"
        > index.html;
     fi;
   - if [ $(git status --porcelain | wc -l) -lt 1 ]; then
