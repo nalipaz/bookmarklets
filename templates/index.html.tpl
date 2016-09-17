@@ -18,7 +18,7 @@
 
   <footer>
     <p>
-      The source code for these bookmarklets can be found in my <a href="https://github.com/nalipaz/bookmarklets" rel="external">GitHub repository</a>.
+      <em>The source code for these bookmarklets can be found in my <a href="https://github.com/nalipaz/bookmarklets" rel="external">GitHub repository</a>.</em>
     </p>
   </footer>
   </body>
